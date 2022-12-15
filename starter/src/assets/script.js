@@ -22,12 +22,15 @@ const orange = {
   image: 'images/orange.jpg'
 }
 
+
 const products = [cherry, strawberry, orange];
+
 
 let cart = [];
 
+
 function addProductToCart(productId) {
-  const addProduct = products.find((product) => product.productId === productId);
+  let addProduct = products.find((product) => product.productId === productId);
   if (cart.includes(addProduct) === true) {
     addProduct.quantity += 1;
   } else {
@@ -36,55 +39,51 @@ function addProductToCart(productId) {
   }
 }
 
+
 function increaseQuantity(productId) {
-  const increaseProduct = products.find((product) => product.productId === productId);
+  let increaseProduct = products.find((product) => product.productId === productId);
   increaseProduct.quantity += 1;
 }
 
-/* Create a function named decreaseQuantity that takes in the productId as an argument
-  - decreaseQuantity should get the correct product based on the productId
-  - decreaseQuantity should decrease the quantity of the product
-  - if the function decreases the quantity to 0, the product is removed from the cart
-*/
+
 function decreaseQuantity(productId) {
-  const decreaseProduct = products.find((product) => product.productId === productId);
-  index = cart.forEach (function(element, index) {
+  let decreaseProduct = products.find((product) => product.productId === productId);
+  let index = cart.forEach (function(element, index) {
     if (cart[index] === decreaseProduct) {
       return index
     }
-  })
-  if (decreaseProduct.quantity === 0) {
-      cart.splice(index, 1)
+  });
+  if (decreaseProduct.quantity === 1) {
+      removeProductFromCart(decreaseProduct.productId)
   } else {
     decreaseProduct.quantity -= 1;
   }
 } 
 
-/* Create a function named removeProductFromCart that takes in the productId as an argument
-  - removeProductFromCart should get the correct product based on the productId
-  - removeProductFromCart should update the product quantity to 0
-  - removeProductFromCart should remove the product from the cart
-*/
+
 function removeProductFromCart(productId) {
-  const removeProduct = products.find((product) => product.productId === productId);
-  index = cart.forEach (function(element, index) {
-    if (cart[index] === decreaseProduct) {
+  let removeProduct = products.find((product) => product.productId === productId);
+  let index = cart.forEach (function(element, index) {
+    if (cart[index] === removeProduct) {
       return index
     }
-  })
-  removeProduct.quantity = 0
-  cart.splice(index, 1)
+  });
+  removeProduct.quantity = 0;
+  cart.splice(index, 1);
 }
 
-/* Create a function named cartTotal that has no parameters
-  - cartTotal should iterate through the cart to get the total of all products
-  - cartTotal should return the sum of the products in the cart
-*/
+
 function cartTotal() {
+  sum = 0
+  for (i = 0; i < cart.length; i++) {
+    sum += cart[i].quantity * cart[i].price;
+  }
+  return sum
 }
 
 /* Create a function called emptyCart that empties the products from the cart */
 function emptyCart() {
+  return cart = [];
 }
 
 /* Create a function named pay that takes in an amount as an argument
