@@ -15,6 +15,32 @@
    - strawberry.jpg by Allec Gomes
 */
 
+const cherry = {
+  name: 'Carton of cherries',
+  price: 4,
+  quantity: 0,
+  productId: 100,
+  image: 'images/cherry.jpg'
+}
+
+const strawberry = {
+  name: 'Carton of strawberries',
+  price: 5, 
+  quantity: 0,
+  productId: 101,
+  image: 'images/strawberry.jpg'
+}
+
+const orange = {
+  name: 'Bag of oranges',
+  price: 10,
+  quantity: 0,
+  productId: 102,
+  image: 'images/orange.jpg'
+}
+
+const products = [cherry, strawberry, orange];
+
 /* Declare an empty array named cart to hold the items in the cart */
 
 /* Create a function named addProductToCart that takes in the product productId as an argument
