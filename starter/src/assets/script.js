@@ -43,11 +43,23 @@ const products = [cherry, strawberry, orange];
 
 /* Declare an empty array named cart to hold the items in the cart */
 
+let cart = [];
+
 /* Create a function named addProductToCart that takes in the product productId as an argument
   - addProductToCart should get the correct product based on the productId
   - addProductToCart should then increase the product's quantity
   - if the product is not already in the cart, add it to the cart
 */
+
+function addProductToCart(id) {
+  id = ''
+  products.forEach(function(product) {
+    id = product.productId;
+  })
+  if (id === '100') {
+    cart.push(cherry.name)
+  }
+}
 
 /* Create a function named increaseQuantity that takes in the productId as an argument
   - increaseQuantity should get the correct product based on the productId
