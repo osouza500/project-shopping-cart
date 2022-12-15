@@ -25,6 +25,7 @@ const orange = {
 
 const products = [cherry, strawberry, orange];
 
+let totalPaid = 0;
 
 let cart = [];
 
@@ -48,11 +49,6 @@ function increaseQuantity(productId) {
 
 function decreaseQuantity(productId) {
   let decreaseProduct = products.find((product) => product.productId === productId);
-  let index = cart.forEach (function(element, index) {
-    if (cart[index] === decreaseProduct) {
-      return index
-    }
-  });
   if (decreaseProduct.quantity === 1) {
       removeProductFromCart(decreaseProduct.productId)
   } else {
@@ -63,11 +59,7 @@ function decreaseQuantity(productId) {
 
 function removeProductFromCart(productId) {
   let removeProduct = products.find((product) => product.productId === productId);
-  let index = cart.forEach (function(element, index) {
-    if (cart[index] === removeProduct) {
-      return index
-    }
-  });
+  let index = cart.indexOf(removeProduct)
   removeProduct.quantity = 0;
   cart.splice(index, 1);
 }
@@ -81,19 +73,24 @@ function cartTotal() {
   return sum
 }
 
-/* Create a function called emptyCart that empties the products from the cart */
+
 function emptyCart() {
-  return cart = [];
+  for (i = 0; i < cart.length; i++) {
+    cart[i].quantity = 0
+    cart.splice(i, 1)
+  }
 }
 
-/* Create a function named pay that takes in an amount as an argument
-  - pay will return a negative number if there is a remaining balance
-  - pay will return a positive number if money should be returned to customer
-*/
-function pay() {
+
+function pay(amount) {
+  totalPaid += amount;
+  if (totalPaid < cartTotal()) {
+    return totalPaid - cartTotal();
+  } else {
+    return totalPaid - cartTotal()
+  }
 }
 
-/* Place stand out suggestions here (stand out suggestions can be found at the bottom of the project rubric.)*/
 
 
 /* The following is for running unit tests. 
