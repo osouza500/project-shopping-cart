@@ -24,15 +24,7 @@ const orange = {
 
 const products = [cherry, strawberry, orange];
 
-/* Declare an empty array named cart to hold the items in the cart */
-
 let cart = [];
-
-/* Create a function named addProductToCart that takes in the product productId as an argument
-  - addProductToCart should get the correct product based on the productId
-  - addProductToCart should then increase the product's quantity
-  - if the product is not already in the cart, add it to the cart
-*/
 
 function addProductToCart(productId) {
   const addProduct = products.find((product) => product.productId === productId);
@@ -44,10 +36,6 @@ function addProductToCart(productId) {
   }
 }
 
-/* Create a function named increaseQuantity that takes in the productId as an argument
-  - increaseQuantity should get the correct product based on the productId
-  - increaseQuantity should then increase the product's quantity
-*/
 function increaseQuantity(productId) {
   const increaseProduct = products.find((product) => product.productId === productId);
   increaseProduct.quantity += 1;
@@ -58,15 +46,34 @@ function increaseQuantity(productId) {
   - decreaseQuantity should decrease the quantity of the product
   - if the function decreases the quantity to 0, the product is removed from the cart
 */
-function decreaseQuantity() {
-}
+function decreaseQuantity(productId) {
+  const decreaseProduct = products.find((product) => product.productId === productId);
+  index = cart.forEach (function(element, index) {
+    if (cart[index] === decreaseProduct) {
+      return index
+    }
+  })
+  if (decreaseProduct.quantity === 0) {
+      cart.splice(index, 1)
+  } else {
+    decreaseProduct.quantity -= 1;
+  }
+} 
 
 /* Create a function named removeProductFromCart that takes in the productId as an argument
   - removeProductFromCart should get the correct product based on the productId
   - removeProductFromCart should update the product quantity to 0
   - removeProductFromCart should remove the product from the cart
 */
-function removeProductFromCart() {
+function removeProductFromCart(productId) {
+  const removeProduct = products.find((product) => product.productId === productId);
+  index = cart.forEach (function(element, index) {
+    if (cart[index] === decreaseProduct) {
+      return index
+    }
+  })
+  removeProduct.quantity = 0
+  cart.splice(index, 1)
 }
 
 /* Create a function named cartTotal that has no parameters
