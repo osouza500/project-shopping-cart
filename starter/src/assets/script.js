@@ -84,20 +84,9 @@ function emptyCart() {
 
 function pay(amount) {
   totalPaid += amount;
-  if (totalPaid < cartTotal()) {
-    return totalPaid - cartTotal();
-  } else {
-    return totalPaid - cartTotal()
-  }
+  return totalPaid - cartTotal();
 }
 
-
-
-/* The following is for running unit tests. 
-   To fully complete this project, it is expected that all tests pass.
-   Run the following command in terminal to run tests
-   npm run test
-*/
 
 module.exports = {
    products,
